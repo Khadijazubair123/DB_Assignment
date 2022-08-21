@@ -54,6 +54,29 @@ public class DBHelper extends SQLiteOpenHelper {
         //if (insert == -1) { return false; }
         //else{return true;}
     }
+    public void updateStudent(StudentModel stu,int StudentID)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(STUDENT_NAME, stu.getName());
+        cv.put(STUDENT_ROLL, stu.getRollNmber());
+        cv.put(STUDENT_ENROLL, stu.isEnroll());
+
+        String StuID=Integer.toString(StudentID);
+        Cursor cursor=db.rawQuery("SELECT * FROM " + STUDENT_TABLE +" WHERE StudentID=?",new String[]{StuID});
+
+        if(cursor.getCount()>0){
+            long result=db.update(STUDENT_TABLE,cv,"StudentID=?",new String[]{StuID});
+        }
+        cursor.close();
+    }
+    public void Delete(String Roll) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String deleteQuerry = "DELETE FROM " + STUDENT_TABLE + " WHERE " + STUDENT_ROLL + " = " + Roll;
+        db.execSQL(deleteQuerry);
+//        db.delete("STUDENT_TABLE",STUDENT_ROLL+"=?",new String[]{Roll});
+        db.close();
+    }
 
     public ArrayList<StudentModel> getAllStudents() {
 

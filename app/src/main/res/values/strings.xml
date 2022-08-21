@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DB_Assignment</string>
+    <string name="IsEnrolled">IsEnrolled</string>
+    <string name="StudentName">StudentName</string>
+    <string name="RollNumber">RollNumber</string>
+    <string name="ButtonViewAll">ViewAll</string>
+    <string name="Add">Add Value</string>
 </resources>
